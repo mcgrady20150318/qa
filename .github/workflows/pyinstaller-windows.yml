@@ -1,25 +1,50 @@
-name: Package exe with PyInstaller - Windows
+name: Build Workflow
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  build-windows:
+    runs-on: windows-2019
     steps:
-    - uses: actions/checkout@v2
-    - name: PyInstaller Windows
-      uses: JackMcKew/pyinstaller-action-windows@python3-10-pyinstaller-5-3
-      with:
-        path: src
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+      - name: Install requirements
+        run: |
+          pip install -r src/requirements.txt
+      - name: Run PyInstaller
+        run: |
+          python -m PyInstaller src/qa.spec
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Windows_qwiklabs
+          path: dist/qa.exe
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-exe
-        path: src/dist/windows # or path/to/artifact
-
+      - name: create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
+        with:
+          tag_name: ${{ github.event.head_commit.message }}
+          release_name: ${{ github.event.head_commit.message }}
+          overwrite: true
+          body: |
+            Test Release v1.0.0
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
+        with:
+          upload_url: ${{steps.create_release.outputs.upload_url}}
+          asset_path: dist/qa.exe
+          asset_name: qa-Windows-amd64.exe
+          asset_content_type: application/zip
