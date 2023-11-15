@@ -2,6 +2,8 @@ name: Build Workflow
 
 on:
   push:
+    tags:
+      - 'v*'
 
 jobs:
   build-windows:
@@ -35,7 +37,7 @@ jobs:
           release_name: Windows Release ${{ github.ref }}
           # overwrite: true
           body: |
-            Windows Release ${{ github.ref }}
+            Windows Release
           # draft: false
           # prerelease: false
       - name: Upload Release Asset
