@@ -31,11 +31,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GTOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: Linux ${{ github.ref }}
+          release_name: Linux Release ${{ github.ref }}
           overwrite: true
           body: |
-            Test Release v1.0.0
+            Linux Release ${{ github.ref }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
