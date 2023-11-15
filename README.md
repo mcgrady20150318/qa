@@ -8,4 +8,6 @@
 
 `./qa --id 2310.11511`
 
-可用你关心的arxiv id来替换上述id
+可用你关心的arxiv id来替换上述id，效果如下图：
+
+![demo](./assets/demo.png)
