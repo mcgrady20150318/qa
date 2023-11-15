@@ -39,7 +39,7 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: >            
-                python -m PyInstaller src/qa.spec
+                python -m PyInstaller src/qa.spec &&
                 zip -r9 qa src/dist/                
             OUT_FILE_NAME: qa_mac.zip
             ASSET_MIME: application/zip
