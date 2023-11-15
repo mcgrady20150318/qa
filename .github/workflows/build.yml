@@ -36,13 +36,14 @@ jobs:
     strategy:
       matrix:
         include:
-          # - os: macos-latest
-          #   TARGET: macos
-          #   CMD_BUILD: >            
-          #       python -m PyInstaller src/qa.spec &&
-          #       zip -r9 qa src/dist/                
-          #   OUT_FILE_NAME: qa_mac.zip
-          #   ASSET_MIME: application/zip
+          - os: macos-latest
+            TARGET: macos
+            CMD_BUILD: >            
+                python -m PyInstaller src/qa.spec &&
+                cd dist/ &&
+                zip -r9 qa ./                
+            OUT_FILE_NAME: qa_mac.zip
+            ASSET_MIME: application/zip
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: python -m PyInstaller src/qa.spec
