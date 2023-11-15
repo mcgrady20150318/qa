@@ -31,13 +31,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GTOKEN }}
         with:
-          tag_name: Windows ${{ github.ref }}
+          tag_name: ${{ github.ref }}
           release_name: Windows Release ${{ github.ref }}
-          overwrite: true
+          # overwrite: true
           body: |
             Windows Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          # draft: false
+          # prerelease: false
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
