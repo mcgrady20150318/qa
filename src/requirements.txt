@@ -1,6 +1,3 @@
 rich
 PyInstaller
 requests
-json
-time
-argparse
