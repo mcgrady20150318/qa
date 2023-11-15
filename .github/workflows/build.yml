@@ -44,6 +44,14 @@ jobs:
                 zip -r qa_mac.zip ./                
             OUT_FILE_NAME: qa_mac.zip
             ASSET_MIME: application/zip
+          - os: ubuntu-latest
+            TARGET: linux
+            CMD_BUILD: >            
+                python -m PyInstaller src/qa.spec &&
+                cd dist/ &&
+                zip -r qa_linux.zip ./                
+            OUT_FILE_NAME: qa_linux.zip
+            ASSET_MIME: application/zip
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: python -m PyInstaller src/qa.spec
