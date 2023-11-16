@@ -11,3 +11,8 @@
 可用你感兴趣的arxiv id来替换上述id，效果如下图：
 
 ![demo](./assets/demo.png)
+
+## Todo
+
+- [x] 在线arxiv pdf QA
+- [] 本地pdf QA
