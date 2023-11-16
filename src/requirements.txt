@@ -1,4 +1,4 @@
 rich
 PyInstaller
 requests
-import PyPDF2
+PyPDF2
