@@ -15,4 +15,4 @@
 ## Todo
 
 - [x] 在线arxiv pdf QA
-- [] 本地pdf QA
+- [ ] 本地pdf QA
