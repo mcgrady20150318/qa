@@ -2,6 +2,10 @@
 
 一个基于命令行的学术论文QA工具，大模型技术支持来自moonshot。
 
+## 支持平台 
+
+本工具支持Windows、Linux和MacOS，最新的命令行工具可到[发布页面](https://github.com/mcgrady20150318/qa/releases/tag/v0.1.7)下载。
+
 ## 使用
 
 ### id模式
